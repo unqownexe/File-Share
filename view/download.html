@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Dosyalar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/css/download.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+</head>
+
+<body>
+    <header class="topbar">
+        <div class="brand">
+            <div class="logo"><i class="fa-solid fa-folder-open"></i></div>
+            <div>
+                <h1>Dosyalar</h1>
+                <p class="subtitle">Paylaşılan tüm dosyalar</p>
+            </div>
+        </div>
+        <a class="upload-link" href="/upload"><i class="fa-solid fa-upload"></i> Yükle</a>
+    </header>
+
+    <main class="container">
+        <div class="toolbar">
+            <div class="search">
+                <span class="search-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+                <input type="text" id="search" placeholder="Dosya ara..." />
+            </div>
+            <div class="view-toggle">
+                <button class="vt active" data-view="grid" title="Izgara"><i
+                        class="fa-solid fa-table-cells-large"></i></button>
+                <button class="vt" data-view="list" title="Liste"><i class="fa-solid fa-list"></i></button>
+            </div>
+        </div>
+
+        <div class="grid" id="grid"></div>
+        <div class="empty" id="empty" style="display:none">
+            <div class="empty-icon"><i class="fa-solid fa-folder-open"></i></div>
+            <p>Henüz dosya yok</p>
+        </div>
+        <section class="devices-section">
+            <div class="devices-head">
+                <h2><i class="fa-solid fa-network-wired"></i> Yerel Ağdaki Bilgisayarlar</h2>
+                <button class="devices-refresh" id="devicesRefresh" title="Yeniden tara"><i
+                        class="fa-solid fa-rotate"></i> Yenile</button>
+            </div>
+            <p class="devices-status" id="devicesStatus">Taranıyor...</p>
+            <div class="devices-grid" id="devicesGrid"></div>
+
+            <!-- Seçili cihaz paneli: dosyalar, gönderme, arayüz -->
+            <div class="peer-panel" id="peerPanel">
+                <div class="peer-head">
+                    <div class="peer-title">
+                        <i class="fa-solid fa-desktop"></i>
+                        <div>
+                            <h3 id="peerTitle"></h3>
+                            <p class="devices-status" id="peerSub"></p>
+                        </div>
+                    </div>
+                    <div class="peer-actions">
+                        <button class="devices-refresh" id="peerRefresh" title="Listeyi yenile"><i
+                                class="fa-solid fa-rotate"></i> Yenile</button>
+                        <button class="devices-refresh" id="peerUploadBtn"><i class="fa-solid fa-upload"></i> Dosya
+                            Gönder</button>
+                        <a class="devices-refresh" id="peerOpenWeb" target="_blank" rel="noopener"><i
+                                class="fa-solid fa-arrow-up-right-from-square"></i> Arayüzü Aç</a>
+                        <button class="peer-close" id="peerClose" title="Kapat"><i
+                                class="fa-solid fa-xmark"></i></button>
+                    </div>
+                </div>
+                <input type="file" id="peerInput" multiple style="display:none" />
+                <div class="peer-progress" id="peerProgressBox" style="display:none">
+                    <div class="bar" id="peerProgressBar"></div>
+                </div>
+                <p class="devices-status peer-msg" id="peerMsg"></p>
+                <div class="peer-files" id="peerFiles"></div>
+                <p class="devices-status" id="peerEmpty" style="display:none">Bu bilgisayarda paylaşılan dosya yok</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-credit">
+        made by <a href="https://github.com/unqownexe" target="_blank" rel="noopener">unqown</a>
+        <span class="dot">•</span>
+        credit <a href="https://webtelya.com" target="_blank" rel="noopener">webtelya.com</a>
+    </footer>
+
+    <!-- Önizleme Modal -->
+    <div class="modal" id="modal">
+        <div class="modal-backdrop" id="modalBackdrop"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose"><i class="fa-solid fa-xmark"></i></button>
+            <div class="modal-body" id="modalBody"></div>
+            <div class="modal-footer">
+                <div class="modal-name" id="modalName"></div>
+                <a class="btn-download" id="modalDownload" download><i class="fa-solid fa-download"></i> İndir</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toplu indirme çubuğu -->
+    <div class="bulk-bar" id="bulkBar">
+        <span class="bulk-count" id="bulkCount">0 dosya seçildi</span>
+        <button class="bulk-download" id="bulkDownload"><i class="fa-solid fa-download"></i> Seçilenleri İndir</button>
+        <button class="bulk-clear" id="bulkClear"><i class="fa-solid fa-xmark"></i> Temizle</button>
+    </div>
+
+    <script src="/js/download.js"></script>
+    <script src="/js/devices.js"></script>
+</body>
+
+</html>

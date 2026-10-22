@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Dosya Yükle</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/css/upload.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+</head>
+
+<body>
+    <div class="card">
+        <div class="brand">
+            <div class="logo"><i class="fa-solid fa-upload"></i></div>
+            <div class="brand-text">
+                <h1>Dosya Yükle</h1>
+                <p class="subtitle">Resimleri sürükle bırak veya seç — birden fazla dosya desteklenir</p>
+            </div>
+            <a class="files-link" href="/" title="İndirilen dosyalara git"><i class="fa-solid fa-folder-open"></i>
+                Dosyalar</a>
+        </div>
+
+        <div class="drop" id="drop">
+            <div class="icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+            <div class="title">Dosyaları buraya bırak</div>
+            <div class="hint">veya tıklayarak seç • JPG, PNG, GIF, WEBP, MP4, PDF...</div>
+        </div>
+        <input type="file" id="file" multiple accept="image/*,video/*" style="display:none" />
+        <div id="badge"></div>
+
+        <div class="grid" id="previews"></div>
+
+        <div class="row">
+            <button class="btn btn-ghost" id="clearBtn" onclick="clearAll()">Temizle</button>
+            <button class="btn btn-primary" id="btn" onclick="upload()">Yükle</button>
+        </div>
+
+        <div class="progress" id="progBox">
+            <div class="bar" id="bar"></div>
+        </div>
+        <div class="info" id="info"></div>
+
+        <div class="divider"><span>veya</span></div>
+
+        <div class="text-share">
+            <div class="text-share-head">
+                <span class="text-share-title"><i class="fa-solid fa-pen-to-square"></i> Metin Paylaş</span>
+                <span class="text-share-hint">Metin yaz, link oluştur</span>
+            </div>
+            <textarea id="textInput" placeholder="Paylaşmak istediğin metni buraya yaz..."></textarea>
+            <label class="save-check">
+                <input type="checkbox" id="saveAsFile" />
+                <span>Dosya olarak kaydet (.txt)</span>
+            </label>
+            <div class="row">
+                <button class="btn btn-ghost" onclick="clearText()">Temizle</button>
+                <button class="btn btn-primary" id="textBtn" onclick="shareText()">Metni Paylaş</button>
+            </div>
+            <div class="info" id="textInfo"></div>
+        </div>
+
+        <p class="credit">
+            made by <a href="https://github.com/unqownexe" target="_blank" rel="noopener">unqown</a>
+            <span class="dot">•</span>
+            credit <a href="https://webtelya.com" target="_blank" rel="noopener">webtelya.com</a>
+        </p>
+    </div>
+
+    <script src="/js/upload.js"></script>
+</body>
+
+</html>
